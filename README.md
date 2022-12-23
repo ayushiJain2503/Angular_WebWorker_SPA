@@ -1,6 +1,13 @@
 # SpaWebWorker
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.14.
+This project demonstrated the web worker functionality in a simple UI. There is a pseudo socket created using javascript timers. It emits large amount of data after certain intervals. Web worker keeps updating the UI with the latest 10 elements through main thread. User can edit few parameters from UI e.g. timer time, array size, array IDs to be specifically selected.
+
+This app also uses class transformer from https://www.npmjs.com/package/class-transformer. With the help of this main thread eits plain object in form of a class.
+
+App also incorporates use of ngRx for store management, Angular Material and Bootstrap for good UI. ESLint and Prettier for app linting.
+
+![Screenshot 2022-12-23 190608](https://user-images.githubusercontent.com/119619653/209357160-8bd5a4db-1d95-45f9-a236-2233f25f5c77.png)
+
 
 ## Development server
 
