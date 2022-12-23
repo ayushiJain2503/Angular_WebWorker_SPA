@@ -1,0 +1,32 @@
+<div class="dashboard-container">
+    <mat-card>
+        <form [formGroup]="tableInputsForm" class="input-form" style="">
+            <mat-form-field>
+                <mat-label>Timer</mat-label>
+                <input matInput formControlName="timer" (blur)="updateTimer()" placeholder="Default value is 3 second">
+                <mat-error *ngIf="tableInputsForm?.controls?.timer?.errors?.min">
+                    Value can't be less than 1000 ms 
+                </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Array Size</mat-label>
+                <input matInput formControlName="size" (blur)="updateArraySize()" placeholder="Default array size is 100">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Additional Array Ids</mat-label>
+                <input matInput formControlName="arrayIds" (blur)="updateIdArray()" placeholder="Enter ID comma separated">
+                <mat-error *ngIf="tableInputsForm?.controls?.arrayIds?.errors?.pattern">
+                    Please enter only comma separated numbers 
+                </mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card>
+    <ng-container *ngIf="transformedData.length; else loader">
+        <app-data-table [tableData]="transformedData"></app-data-table>
+    </ng-container>
+    <ng-template #loader>
+        <mat-spinner class="loader"></mat-spinner>
+    </ng-template>
+</div>

@@ -1,0 +1,40 @@
+<div class="table-div">
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Int</th>
+            <th scope="col">Float</th>
+            <th scope="col">Color</th>
+            <th scope="col">Child</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let data of tableData">
+            <th scope="row">{{data?.id}}</th>
+            <td>{{data?.int}}</td>
+            <td>{{data?.float}}</td>
+            <td [style.background-color] = "data.color">{{data?.color}}</td>
+            <td *ngIf="data?.child; else noChildTemplate;">
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Id</th>
+                          <th scope="col">Color</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{data?.child?.id}}</td>
+                            <td [style.background-color] = "data?.child?.color">{{data?.child?.color}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+<ng-template #noChildTemplate>
+    <p class="no-child-div">No Child data for this element.</p>
+</ng-template>
